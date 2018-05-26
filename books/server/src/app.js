@@ -8,15 +8,22 @@ const morgan = require('morgan');
 const app = express();
 //enables morgan, a log generator
 app.use(morgan('combined'));
-//parses any json requests sent in 
+//parses any json requests sent in
 app.use(bodyParser.json());
 //cors is used to allow any client to access app. Allows server to be hosted on a different domain.
 app.use(cors());
 
+// require('./routes')(app)
+
 // ENDPOINT
-app.get('/status', (req, res) => {
+// app.get ('/register', (req, res) => {
+//   res.send({
+//     message: 'Hey, this the get route'
+//   // });
+// });
+app.post('/register', (req, res) => {
   res.send({
-    message: "hello world"
+    message: `Hello ${req.body.email}! You are a registered! Happy reading! `
   });
 });
 //starts express server
